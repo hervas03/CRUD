@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="5.0">
+  <display-name>CRUD</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>BarcosController</display-name>
+    <servlet-name>BarcosController</servlet-name>
+    <servlet-class>tiendaVehiculos.controllers.BarcosController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BarcosController</servlet-name>
+    <url-pattern>/BarcosController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CochesController</display-name>
+    <servlet-name>CochesController</servlet-name>
+    <servlet-class>tiendaVehiculos.controllers.CochesController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CochesController</servlet-name>
+    <url-pattern>/CochesController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>menuController</display-name>
+    <servlet-name>menuController</servlet-name>
+    <servlet-class>tiendaVehiculos.controllers.menuController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>menuController</servlet-name>
+    <url-pattern>/menuController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MotosController</display-name>
+    <servlet-name>MotosController</servlet-name>
+    <servlet-class>tiendaVehiculos.controllers.MotosController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MotosController</servlet-name>
+    <url-pattern>/MotosController</url-pattern>
+  </servlet-mapping>
+</web-app>
