@@ -19,7 +19,7 @@ public class BarcosDAO {
 	ResultSet rs;
 	Statement statement;
 	int resultSet;
-
+	String sql;
 	Barcos barco = new Barcos();
 	ArrayList<Barcos> barcos = new ArrayList<Barcos>();
 
@@ -45,9 +45,8 @@ public class BarcosDAO {
 		 * 
 		 * }
 		 */
-
-		String sql = "INSERT INTO barcos(marca, modelo, licencia) VALUES ('" + barco.getMarca() + "','"
-				+ barco.getModelo() + "','" + barco.getLicencia() + "')";
+		sql = "INSERT INTO barcos(marca, modelo, licencia) VALUES ('" + barco.getMarca() + "','" + barco.getModelo()
+				+ "','" + barco.getLicencia() + "')";
 
 		try {
 			conn = conexion.getConnection();
@@ -63,7 +62,7 @@ public class BarcosDAO {
 
 	public boolean delete(int id) {
 
-		String sql = "DELETE FROM barcos where id = " + id;
+		sql = "DELETE FROM barcos where id = " + id;
 
 		try {
 			conn = conexion.getConnection();
@@ -80,8 +79,8 @@ public class BarcosDAO {
 
 	public Barcos update(Barcos barco) {
 
-		String sql = "UPDATE barcos SET marca = '" + barco.getMarca() + "', modelo = '" + barco.getModelo()
-				+ "', licencia = '" + barco.getLicencia() + "' WHERE id=" + barco.getId();
+		sql = "UPDATE barcos SET marca = '" + barco.getMarca() + "', modelo = '" + barco.getModelo() + "', licencia = '"
+				+ barco.getLicencia() + "' WHERE id=" + barco.getId();
 
 		try {
 			conn = conexion.getConnection();
@@ -97,7 +96,7 @@ public class BarcosDAO {
 
 	public Barcos find(int id) {
 
-		String sql = "SELECT * FROM barcos where id = " + id;
+		sql = "SELECT * FROM barcos where id = " + id;
 
 		try {
 			conn = conexion.getConnection();
@@ -137,7 +136,7 @@ public class BarcosDAO {
 		 * conexion.cerrarConexion(); } catch (SQLException ex) {
 		 * System.out.println("ERROR CERRAR CONEXION"); } }
 		 */
-		String sql = "SELECT * FROM barcos";
+		sql = "SELECT * FROM barcos";
 		barcos = new ArrayList<Barcos>();
 
 		try {

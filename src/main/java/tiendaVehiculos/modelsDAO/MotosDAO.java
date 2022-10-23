@@ -11,17 +11,17 @@ import tiendaVehiculos.models.Coches;
 import tiendaVehiculos.models.Motos;
 
 public class MotosDAO {
-	
+
 	static Conexion conexion = new Conexion();
 
 	static Connection conn;
 	static PreparedStatement ps;
 	static ResultSet rs;
 	static Statement statement;
-	
+
 	static Motos moto = new Motos();
 	static ArrayList<Motos> motos = new ArrayList<Motos>();
-	
+
 	String sql;
 
 	public MotosDAO() {
@@ -30,8 +30,8 @@ public class MotosDAO {
 
 	public Motos save(Motos moto) {
 
-		sql = "INSERT INTO motos(marca, modelo, caballos) VALUES ('" + moto.getMarca() + "','"
-				+ moto.getModelo() + "','" + moto.getCaballos() + "')";
+		sql = "INSERT INTO motos(marca, modelo, caballos) VALUES ('" + moto.getMarca() + "','" + moto.getModelo()
+				+ "','" + moto.getCaballos() + "')";
 
 		try {
 			conn = conexion.getConnection();
@@ -128,7 +128,7 @@ public class MotosDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		}
 		return motos;
 	}
 

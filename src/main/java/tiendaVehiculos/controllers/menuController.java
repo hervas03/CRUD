@@ -25,7 +25,7 @@ public class menuController extends HttpServlet {
 	String login = "auth/login.jsp";
 	String register = "auth/register.jsp";
 	String index = "index.jsp";
-
+	RequestDispatcher vista;
 	String nombre, mail, password;
 
 	/**
@@ -51,15 +51,13 @@ public class menuController extends HttpServlet {
 			break;
 		case "logout":
 			request.getSession().removeAttribute("usuario");
-			
 			acceso = index;
 			break;
 
 		default:
 			break;
 		}
-
-		RequestDispatcher vista = request.getRequestDispatcher(acceso);
+		vista = request.getRequestDispatcher(acceso);
 		vista.forward(request, response);
 
 	}
@@ -119,7 +117,7 @@ public class menuController extends HttpServlet {
 			break;
 		}
 
-		RequestDispatcher vista = request.getRequestDispatcher(acceso);
+		vista = request.getRequestDispatcher(acceso);
 		vista.forward(request, response);
 	}
 

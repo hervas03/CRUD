@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ include file = "/auth/login-validation.jsp" %>
+<%@ include file="/auth/login-validation.jsp"%>
 <!DOCTYPE html>
 <html class="htmlFondo">
 <head>
 <meta charset="UTF-8">
-<title>HALA MADRID</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create motos</title>
 <link href="Style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -24,17 +25,17 @@
 
 			<div class="infoCamposTexto col-sm-12 col-md-12 col-lg-12">Marca:</div>
 			<div class="col-sm-12 col-md-12 col-lg-12">
-				<input class="prueba" required="required" type="text"
+				<input class="campo-texto" required="required" type="text"
 					name="marcaNew" required="required">
 			</div>
 			<div class="infoCamposTexto col-sm-12 col-md-12 col-lg-12">Modelo:</div>
 			<div class="col-sm-12 col-md-12 col-lg-12">
-				<input class="prueba" required="required" type="text"
+				<input class="campo-texto" required="required" type="text"
 					name="modeloNew">
 			</div>
 			<div class="infoCamposTexto col-sm-12 col-md-12 col-lg-12">Caballos:</div>
 			<div class="col-sm-12 col-md-12 col-lg-12">
-				<input class="prueba" required="required" type="text"
+				<input class="campo-texto" required="required" type="text"
 					name="caballosNew">
 			</div>
 			<div class="col-sm-12 col-md-12 col-lg-12">

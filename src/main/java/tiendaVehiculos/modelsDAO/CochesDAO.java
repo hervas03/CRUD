@@ -17,11 +17,9 @@ public class CochesDAO {
 	static PreparedStatement ps;
 	static ResultSet rs;
 	static Statement statement;
-
+	String sql;
 	static Coches coche = new Coches();
 	static ArrayList<Coches> coches = new ArrayList<Coches>();
-
-	String sql;
 
 	public CochesDAO() {
 		// TODO Auto-generated constructor stub

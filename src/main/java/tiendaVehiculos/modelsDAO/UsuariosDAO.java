@@ -22,13 +22,15 @@ public class UsuariosDAO {
 	Usuarios usuario = new Usuarios();
 	ArrayList<Usuarios> usuarios = new ArrayList<Usuarios>();
 
+	String sql;
+
 	public UsuariosDAO() {
 		super();
 	}
 
 	public ArrayList<Usuarios> all() {
 
-		String sql = "SELECT * FROM usuarios";
+		sql = "SELECT * FROM usuarios";
 		usuarios = new ArrayList<Usuarios>();
 
 		try {
@@ -53,8 +55,8 @@ public class UsuariosDAO {
 
 	public Usuarios insertarUsuario(Usuarios usuario) {
 
-		String sql = "INSERT INTO usuarios(nombre, mail, password) VALUES ('" + usuario.getNombre() + "','"
-				+ usuario.getMail() + "','" + usuario.getPassword() + "')";
+		sql = "INSERT INTO usuarios(nombre, mail, password) VALUES ('" + usuario.getNombre() + "','" + usuario.getMail()
+				+ "','" + usuario.getPassword() + "')";
 
 		try {
 			conn = conexion.getConnection();
@@ -70,7 +72,7 @@ public class UsuariosDAO {
 
 	public Usuarios getUser(String mail, String password) {
 
-		String sql = "SELECT * FROM usuarios WHERE mail = '" + mail + "' AND password = '" + password + "'";
+		sql = "SELECT * FROM usuarios WHERE mail = '" + mail + "' AND password = '" + password + "'";
 
 		try {
 			conn = conexion.getConnection();
@@ -96,7 +98,7 @@ public class UsuariosDAO {
 
 	public boolean validarRegistro(String mail, String password) {
 
-		String sql = "SELECT * FROM usuarios WHERE mail = '" + mail + "' AND password = '" + password + "'";
+		sql = "SELECT * FROM usuarios WHERE mail = '" + mail + "' AND password = '" + password + "'";
 
 		try {
 			conn = conexion.getConnection();

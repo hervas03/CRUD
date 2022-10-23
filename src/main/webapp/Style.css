@@ -23,6 +23,7 @@
 
 /* Pantalla movil  */
 @media only screen and (max-width: 599px) {
+	
 	.col-sm-1 {
 		grid-column: span 1;
 	}
@@ -140,6 +141,10 @@
 	}
 }
 
+* {
+	visibility: visible;
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -255,6 +260,36 @@ hr {
 	width: 100%;
 }
 
+.mainBarco {
+	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)),
+		url("imagenes/barco.jpeg");
+	width: 100%;
+	height: 736px;
+	background-size: cover;
+	background-position: center;
+	width: 100%;
+}
+
+.mainCoche {
+	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)),
+		url("imagenes/coche.jpeg");
+	width: 100%;
+	height: 736px;
+	background-size: cover;
+	background-position: center;
+	width: 100%;
+}
+
+.mainMoto {
+	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)),
+		url("imagenes/moto.jpeg");
+	width: 100%;
+	height: 736px;
+	background-size: cover;
+	background-position: center;
+	width: 100%;
+}
+
 #tablas {
 	padding: 5%;
 }
@@ -264,6 +299,7 @@ hr {
 	font-size: 20px;
 	font-family: "Calibri", serif;
 	padding: 20px;
+	margin-right: 50px;
 }
 
 .contenidoMain {
@@ -324,6 +360,12 @@ hr {
 	text-decoration: none;
 }
 
+/*El texto que añada en content, se añadira al texto de la etiqueta navigationLink*/
+.navigationLink::after{
+	content: "";
+	color: pink;
+}
+
 .navigation {
 	text-align: center;
 	padding: 20px;
@@ -340,7 +382,7 @@ hr {
 	margin-top: 1%;
 }
 
-.prueba {
+.campo-texto {
 	width: 40%;
 	height: 35px;
 	border-radius: 6px;

@@ -5,12 +5,13 @@
 <%@ page import="tiendaVehiculos.models.Barcos"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ include file="/auth/login-validation.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="barcosTAG"%>
 <!DOCTYPE html>
 <html class="htmlFondo">
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BARCOS | index</title>
+<title>Index barcos</title>
 <link href="Style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -18,7 +19,7 @@
 	<%
 	Cookie cookie = new Cookie("Tipo_vehiculo", "Barcos");
 
-	cookie.setMaxAge(60 * 60);
+	cookie.setMaxAge(60 * 60 * 60);
 
 	response.addCookie(cookie);
 	%>
@@ -66,7 +67,27 @@
 							<th class="th">Acciones</th>
 						</tr>
 					</thead>
+
 					<tbody>
+
+						<barcosTAG:forEach var="barcos" items="${bar}">
+
+							<tr>
+								<td class="td">${barcos.getId()}</td>
+								<td class="td">${barcos.getMarca()}</td>
+								<td class="td">${barcos.getModelo()}</td>
+								<td class="td">${barcos.getLicencia()}</td>
+								<td class="td"><a class="accionEditar"
+									href="BarcosController?action=edit&id=${barcos.getId()}">Editar</a>
+									<a class="accionEliminar"
+									href="BarcosController?action=delete&id=${barcos.getId()}">Eliminar</a>
+								</td>
+							</tr>
+
+						</barcosTAG:forEach>
+
+					</tbody>
+					<%-- <tbody>
 						<%
 						ArrayList<Barcos> barcos = (ArrayList<Barcos>) request.getAttribute("bar");
 
@@ -87,20 +108,10 @@
 						<%
 						}
 						%>
-					</tbody>
+					</tbody> --%>
 				</table>
 			</div>
-
-
-
-
-
-
-
-
 		</div>
 	</main>
-
-
 </body>
 </html>

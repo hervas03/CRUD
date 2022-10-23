@@ -5,12 +5,13 @@
 <%@ page import="tiendaVehiculos.models.Coches"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ include file="/auth/login-validation.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="cochesTAG"%>
 <!DOCTYPE html>
 <html class="htmlFondo">
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>COCHES | index</title>
+<title>Index coches</title>
 <link href="Style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -67,27 +68,25 @@
 							<th class="th">Acciones</th>
 						</tr>
 					</thead>
-					<tbody>
-						<%
-						ArrayList<Coches> coches = (ArrayList<Coches>) request.getAttribute("coc");
 
-						for (int i = 0; i < coches.size(); i++) {
-							Coches coche = coches.get(i);
-						%>
-						<tr>
-							<td class="td"><%=coche.getId()%></td>
-							<td class="td"><%=coche.getMarca()%></td>
-							<td class="td"><%=coche.getModelo()%></td>
-							<td class="td"><%=coche.getPuertas()%></td>
-							<td class="td"><%=coche.getPrecio()%></td>
-							<td class="td"><a class="accionEditar"
-								href="CochesController?action=edit&id=<%=coche.getId()%>">Editar</a>
-								<a class="accionEliminar"
-								href="CochesController?action=delete&id=<%=coche.getId()%>">Eliminar</a></td>
-						</tr>
-						<%
-						}
-						%>
+					<tbody>
+
+						<cochesTAG:forEach var="coches" items="${coc}">
+
+							<tr>
+								<td class="td">${coches.getId()}</td>
+								<td class="td">${coches.getMarca()}</td>
+								<td class="td">${coches.getModelo()}</td>
+								<td class="td">${coches.getPuertas()}</td>
+								<td class="td">${coches.getPrecio()}</td>
+								<td class="td"><a class="accionEditar"
+									href="CochesController?action=edit&id=${coches.getId()}">Editar</a>
+									<a class="accionEliminar"
+									href="CochesController?action=delete&id=${coches.getId()}">Eliminar</a></td>
+							</tr>
+
+						</cochesTAG:forEach>
+
 					</tbody>
 				</table>
 			</div>

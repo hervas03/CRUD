@@ -5,24 +5,27 @@
 <%@ page import="tiendaVehiculos.models.Motos"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ include file="/auth/login-validation.jsp"%>
+<!-- TAG -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="motosTAG"%>
 <!DOCTYPE html>
 <html class="htmlFondo">
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MOTOS | index</title>
+<title>Index motos</title>
 <link href="Style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
 	<%
+	//Se añade una cukie del apartado correspondiente
 	Cookie cookie = new Cookie("Tipo_vehiculo", "Motos");
 
 	cookie.setMaxAge(60 * 60);
 
 	response.addCookie(cookie);
 	%>
-
+	<!-- menu de navegacion y cierre de sesion -->
 	<header>
 		<div class="row">
 			<div class="home col-sm-12 col-md-4 col-lg-4">
@@ -48,6 +51,7 @@
 			</div>
 		</div>
 	</header>
+	<!-- Contenidod el index de la seccion de motos -->
 	<main>
 		<div class="row" id="tablas">
 			<div class="nuestrosVehiculos col-sm-12 col-md-6 col-lg-6">Nuestras
@@ -67,37 +71,32 @@
 							<th class="th">Acciones</th>
 						</tr>
 					</thead>
-					<tbody>
-						<%
-						ArrayList<Motos> motos = (ArrayList<Motos>) request.getAttribute("mot");
 
-						for (int i = 0; i < motos.size(); i++) {
-							Motos moto = motos.get(i);
-						%>
-						<tr>
-							<td class="td"><%=moto.getId()%></td>
-							<td class="td"><%=moto.getMarca()%></td>
-							<td class="td"><%=moto.getModelo()%></td>
-							<td class="td"><%=moto.getCaballos()%></td>
-							<td class="td"><a class="accionEditar"
-								href="MotosController?action=edit&id=<%=moto.getId()%>">Editar</a>
-								<a class="accionEliminar"
-								href="MotosController?action=delete&id=<%=moto.getId()%>">Eliminar</a>
-							</td>
-						</tr>
-						<%
-						}
-						%>
+					<tbody>
+
+						<!-- var es la variable, items, el contenido que le paso -->
+						<motosTAG:forEach var="motos" items="${mot}">
+
+							<tr>
+								<td class="td">${motos.getId()}</td>
+								<td class="td">${motos.getMarca()}</td>
+								<td class="td">${motos.getModelo()}</td>
+								<td class="td">${motos.getCaballos()}</td>
+								<td class="td"><a class="accionEditar"
+									href="MotosController?action=edit&id=${motos.getId()}">Editar</a>
+									<a class="accionEliminar"
+									href="MotosController?action=delete&id=${motos.getId()}">Eliminar</a>
+								</td>
+							</tr>
+
+						</motosTAG:forEach>
+
 					</tbody>
 				</table>
 			</div>
 		</div>
 
-
-
-
 	</main>
-
 
 </body>
 </html>

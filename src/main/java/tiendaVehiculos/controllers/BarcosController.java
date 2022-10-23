@@ -25,6 +25,7 @@ public class BarcosController extends HttpServlet {
 	Barcos barco;
 	BarcosDAO barcosDAO = new BarcosDAO();
 
+	RequestDispatcher vista;
 	int id;
 	String marca, modelo, licencia;
 
@@ -46,14 +47,19 @@ public class BarcosController extends HttpServlet {
 
 		switch (action) {
 		case "index":
+			// lleno barcos de todos los registros
 			barcos = barcosDAO.all();
+			// le paso los registros a la etiqueta bar
 			request.setAttribute("bar", barcos);
 			acceso = index;
 			break;
-			
+
 		case "delete":
+			// recogo el id por en enlace y se lo paso delete para que el usuario sea
+			// eliminado
 			id = Integer.parseInt(request.getParameter("id"));
 			barcosDAO.delete(id);
+			// Vuelvo a llenar el atribito
 			barcos = barcosDAO.all();
 			request.setAttribute("bar", barcos);
 			acceso = index;
@@ -74,7 +80,7 @@ public class BarcosController extends HttpServlet {
 			break;
 		}
 
-		RequestDispatcher vista = request.getRequestDispatcher(acceso);
+		vista = request.getRequestDispatcher(acceso);
 		vista.forward(request, response);
 
 	}
@@ -88,9 +94,10 @@ public class BarcosController extends HttpServlet {
 		// TODO Auto-generated method stub
 		acceso = "";
 		action = request.getParameter("action");
-		
+
 		switch (action) {
 		case "create":
+			//recojo la informacion por el nonmbre de los parametros
 			marca = request.getParameter("marcaNew");
 			modelo = request.getParameter("modeloNew");
 			licencia = request.getParameter("licenciaNew");
@@ -104,14 +111,14 @@ public class BarcosController extends HttpServlet {
 			request.setAttribute("bar", barcos);
 			acceso = index;
 			break;
-			
+
 		case "update":
 			id = Integer.parseInt(request.getParameter("idEdit"));
 			marca = request.getParameter("marcaEdit");
 			modelo = request.getParameter("modeloEdit");
 			licencia = request.getParameter("licenciaEdit");
-			
-			barco = new Barcos();	
+
+			barco = new Barcos();
 			barco.setId(id);
 			barco.setMarca(marca);
 			barco.setModelo(modelo);
@@ -120,15 +127,15 @@ public class BarcosController extends HttpServlet {
 			barcos = barcosDAO.all();
 			request.setAttribute("bar", barcos);
 			acceso = index;
-			
+
 			break;
-			
+
 		default:
 			break;
 		}
 
 		// Lanzar la vista en funcion del action recibido
-		RequestDispatcher vista = request.getRequestDispatcher(acceso);
+		vista = request.getRequestDispatcher(acceso);
 		vista.forward(request, response);
 
 	}

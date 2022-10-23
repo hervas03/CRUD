@@ -21,16 +21,15 @@ import tiendaVehiculos.modelsDAO.MotosDAO;
 public class MotosController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
 	Conexion conexion = new Conexion();
 	Connection conn;
-	 
+
 	String acceso;
 	String action;
 
 	Motos moto;
 	MotosDAO motosDAO = new MotosDAO();
-
+	RequestDispatcher vista;
 	int id;
 	String marca, modelo, caballos;
 
@@ -76,7 +75,7 @@ public class MotosController extends HttpServlet {
 			break;
 		}
 
-		RequestDispatcher vista = request.getRequestDispatcher(acceso);
+		vista = request.getRequestDispatcher(acceso);
 		vista.forward(request, response);
 
 	}
@@ -90,7 +89,6 @@ public class MotosController extends HttpServlet {
 		// TODO Auto-generated method stub
 		acceso = "";
 		action = request.getParameter("action");
-
 
 		switch (action) {
 		case "create":
@@ -107,14 +105,14 @@ public class MotosController extends HttpServlet {
 			request.setAttribute("mot", motos);
 			acceso = index;
 			break;
-			
+
 		case "update":
 			id = Integer.parseInt(request.getParameter("idEdit"));
 			marca = request.getParameter("marcaEdit");
 			modelo = request.getParameter("modeloEdit");
 			caballos = request.getParameter("caballosEdit");
-			
-			moto = new Motos();	
+
+			moto = new Motos();
 			moto.setId(id);
 			moto.setMarca(marca);
 			moto.setModelo(modelo);
@@ -125,13 +123,13 @@ public class MotosController extends HttpServlet {
 			request.setAttribute("mot", motos);
 			acceso = index;
 			break;
-			
+
 		default:
 			break;
 		}
 
 		// Lanzar la vista en funcion del action recibido
-		RequestDispatcher vista = request.getRequestDispatcher(acceso);
+		vista = request.getRequestDispatcher(acceso);
 		vista.forward(request, response);
 
 	}

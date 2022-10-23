@@ -23,7 +23,7 @@ public class CochesController extends HttpServlet {
 
 	Coches coche;
 	CochesDAO cochesDAO = new CochesDAO();
-
+	RequestDispatcher vista;
 	int id;
 	String marca, modelo, puertas, precio;
 
@@ -49,7 +49,7 @@ public class CochesController extends HttpServlet {
 			request.setAttribute("coc", coches);
 			acceso = index;
 			break;
-			
+
 		case "delete":
 			id = Integer.parseInt(request.getParameter("id"));
 			cochesDAO.delete(id);
@@ -57,11 +57,11 @@ public class CochesController extends HttpServlet {
 			request.setAttribute("coc", coches);
 			acceso = index;
 			break;
-			
+
 		case "create":
 			acceso = create;
 			break;
-			
+
 		case "edit":
 			id = Integer.parseInt(request.getParameter("id"));
 			request.setAttribute("coc", cochesDAO.find(id));
@@ -71,7 +71,7 @@ public class CochesController extends HttpServlet {
 			break;
 		}
 
-		RequestDispatcher vista = request.getRequestDispatcher(acceso);
+		vista = request.getRequestDispatcher(acceso);
 		vista.forward(request, response);
 
 	}
@@ -103,15 +103,15 @@ public class CochesController extends HttpServlet {
 			request.setAttribute("coc", coches);
 			acceso = index;
 			break;
-			
+
 		case "update":
 			id = Integer.parseInt(request.getParameter("idEdit"));
 			marca = request.getParameter("marcaEdit");
 			modelo = request.getParameter("modeloEdit");
 			puertas = request.getParameter("puertasEdit");
 			precio = request.getParameter("precioEdit");
-			
-			coche = new Coches();	
+
+			coche = new Coches();
 			coche.setId(id);
 			coche.setMarca(marca);
 			coche.setModelo(modelo);
@@ -122,13 +122,13 @@ public class CochesController extends HttpServlet {
 			request.setAttribute("coc", coches);
 			acceso = index;
 			break;
-			
+
 		default:
 			break;
 		}
 
 		// Lanzar la vista en funcion del action recibido
-		RequestDispatcher vista = request.getRequestDispatcher(acceso);
+		vista = request.getRequestDispatcher(acceso);
 		vista.forward(request, response);
 
 	}
